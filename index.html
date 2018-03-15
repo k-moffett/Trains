@@ -7,11 +7,67 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>R-P-S</title>
+    <title>Trains</title>
 </head>
 <body>
 
+<div class="container">
+    <h1 class="Jumbotron">Train Schedule</h1>
+</div>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Current Train Schedule
+                </div>
+                <div class="card-body">
+                    <table id="display-schedule">
+                        <th class="col">Train Name</th>
+                        <th class="col">Destination</th>
+                        <th class="col">Frequency (min)</th>
+                        <th class="col">Next Arrival</th>
+                        <th class="col">Minutes Away</th>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Add Train
+                </div>
+                <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">Train Name</label>
+                                    <input type="text" class="form-control" id="train-name">
+
+                                    <label for="exampleInputEmail1">Destination</label>
+                                    <input type="text" class="form-control" id="destination">
+
+                                    <label for="exampleInputEmail1">First Train Time (HH:mm)</label>
+                                    <input type="text" class="form-control" id="train-time">
+
+                                    <label for="exampleInputEmail1">Frequency</label>
+                                    <input type="text" class="form-control" id="frequency">
+                                    <br>
+                                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="assets/javascript/index.js"></script>
