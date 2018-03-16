@@ -10,6 +10,7 @@ let config = {
   };
   firebase.initializeApp(config);
   let database =  firebase.database()
+  let current_time = moment().format("HH:mm")
 
 $("#submit").on("click", function() {
     event.preventDefault();
@@ -17,7 +18,7 @@ $("#submit").on("click", function() {
     let destination = $("#destination").val().trim()
     let train_time = $("#train-time").val().trim()
     let frequency = $("#frequency").val().trim()
-    let first_time = $("#train-time")
+    let first_time = $("#train-time").moment()
    
     database.ref().push({
         name: name,
@@ -38,13 +39,31 @@ $("#submit").on("click", function() {
 
 
 
-get_dataz()
+
+
+
+
+
+
+
+function get_timez(){
+    let interval_id = setInterval(time, 1000)
+}
+function time(){
+    let moment_time = moment().format("HH:mm")
+    console.log(current_time)
+    current_time = moment_time
+}
 function get_dataz(){
     database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
         console.log(snapshot.val())
+        console.log(snapshot.val().first_time)
         let response = snapshot.val()       
         $("#display-schedule").append(`<tr> <td class="col">`+response.name+`</td> <td class="col">`+response.destination+`</td> <td class="col">`+response.frequency+`</td> <td class="col"></td> <td class="col"></td> </tr>`)
         })
     }
+
+get_timez()
+get_dataz()
 //
 })
