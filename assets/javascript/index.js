@@ -18,8 +18,7 @@ $("#submit").on("click", function() {
     let destination = $("#destination").val().trim()
     let train_time = $("#train-time").val().trim()
     let frequency = $("#frequency").val().trim()
-    let first_time = $("#train-time").moment()
-   
+    let first_time = $("#train-time").val().trim()
     database.ref().push({
         name: name,
         destination: destination,
@@ -57,8 +56,7 @@ function time(){
 function get_dataz(){
     database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
         console.log(snapshot.val())
-        console.log(snapshot.val().first_time)
-        let response = snapshot.val()       
+        let response = snapshot.val()  
         $("#display-schedule").append(`<tr> <td class="col">`+response.name+`</td> <td class="col">`+response.destination+`</td> <td class="col">`+response.frequency+`</td> <td class="col"></td> <td class="col"></td> </tr>`)
         })
     }
