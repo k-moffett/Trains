@@ -56,12 +56,6 @@ function lesser_get_minutes(h1,m1,h2,m2 ){
     total_minutes_left = 1440 - (minute_difference*1)
     return (total_minutes_left*1)
 }
-
-
-
-
-
-
 function get_timez(){
     let interval_id = setInterval(time, 1000)
 }
@@ -73,15 +67,13 @@ function time(){
 function get_dataz(){
     database.ref().orderByChild("dateAdded").on("child_added", function(snapshot) {
         let response = snapshot.val()
-        let next_arrival;
+        let next_arrival = response.first_time
         let minutes_left;
         starting_time = response.first_time.toString().replace(":","")
         string_time = current_time.toString().replace(":","")
 
-        
         math_time = current_time.toString().split(":")
         math_response = response.first_time.toString().split(":")
-
 
         if (starting_time > string_time){
         minutes_left = greater_get_minutes(math_response[0],math_response[1],math_time[0],math_time[1])
@@ -95,7 +87,6 @@ function get_dataz(){
         $("#display-schedule").append(`<tr> <td class="col">`+response.name+`</td> <td class="col">`+response.destination+`</td> <td class="col">`+response.frequency+`</td> <td class="col">`+next_arrival+`</td> <td class="col">`+minutes_left+`</td> </tr>`)
         })
     }
-
 get_timez()
 get_dataz()
 //
